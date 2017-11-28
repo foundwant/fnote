@@ -1,0 +1,10 @@
+﻿su:切换用户的命令
+sudo:是普通用户可以执行只有root才能执行的命令,
+	比如用普通用户执行 $sudo halt -p
+
+设置:给用户设置sudo免输入密码进入root用户的操作
+	vim /etc/sudoers
+	找到root	ALL=(ALL)	ALL这一行,按住a进入append模式,
+	在改行下面添加需要设置权限的用户,比如你用户名为found,
+	那么添加如下:	found	ALL=(ALL)	ALL	保存退出即可,
+	然后在普通用户模式下输入$sudo su 即可进入root权限

@@ -1,0 +1,98 @@
+该文讲解如果在lua环境下使用zeromq套件:
+    (查看官网出处http://zeromq.org/bindings:lua)
+
+安装lua-zmq:
+首先, zeromq和lua已经安装
+这里lua安装需要注意,如果是yum源安装的,lua和luac文件都默认放在/usr/bin目录
+这在安装luasocket的时候,它默认安装在/usr/local/bin目录,这就会导致找不到socket
+所以为了方便,我们把lua执行文件安装在/usr/local/bin下,清除系统路径中所有lua相关;
+
+下载lua安装包, 
+    wget http://www.lua.org/ftp/lua-5.1.4.tar.gz
+    tar -zxf lua-5.1.4.tar.gz
+    默认编译安装
+    
+下载luasocket
+    http://luaforge.net/projects/luasocket/
+    默认编译安装
+
+    
+在以上基础工作完成之后, 下面我肯开始进入到lua-zmq的环境配置中    
+
+1. 安装 LuaRocks 2.0.4.1
+    $ wget http://luarocks.org/releases/luarocks-2.3.0.tar.gz
+    $ tar zxpf luarocks-2.3.0.tar.gz
+    $ cd luarocks-2.3.0
+    # ./configure
+        如果这一步会出现找不到lua.h, 就是找不到lua头文件目录;
+        所以可以指定路径即可解决
+    # ./configure --with-lua-include=/usr/local/include
+
+    # make bootstrap
+    # luarocks install luasocket (安装luasocket)
+
+2. 使用 luarockets
+    $ sudo luarocks install https://raw.github.com/Neopallium/lua-zmq/master/rockspecs/lua-zmq-scm-1.rockspec
+
+    配置threads支持
+    $ sudo luarocks install https://raw.github.com/Neopallium/lua-llthreads/master/rockspecs/lua-llthreads-scm-0.rockspec
+    $ sudo luarocks install https://raw.github.com/Neopallium/lua-zmq/master/rockspecs/lua-zmq-threads-scm-0.rockspec
+	
+3. 下载编译zmq.so
+    $ git clone git://github.com/Neopallium/lua-zmq.git
+    $ cd lua-zmq ; mkdir build ; cd build
+    $ cmake ..
+    $ make
+    $ sudo make install
+
+    在这一步中, cmake的时候失败, 提示 ‘None of the required 'libzmq' found’,
+    (方法解决:https://github.com/zeromq/czmq/issues/839)
+    解决方法:
+        cat /usr/local/lib/pkgconfig/libzmq.pc
+        export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+        
+    永久解决方法:
+        vim ~/.bashrc_profile
+        添加下面一行:
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+        保存退出,然后 source ~/.bash_profile重新导入即可;
+    (具体参照:http://blog.chinaunix.net/uid-23069658-id-4028681.html)
+
+4. 使用zmq.so
+    经过第三步的编译之后,在build/目录会产生zmq.so文件
+    现在切换到examples/目录,执行
+        [root@fd examples]# lua client.lua
+        lua: client.lua:21: module 'zmq' not found:
+                no field package.preload['zmq']
+                no file './zmq.lua'
+                no file '/usr/share/lua/5.1/zmq.lua'
+                no file '/usr/share/lua/5.1/zmq/init.lua'
+                no file '/usr/lib/lua/5.1/zmq.lua'
+                no file '/usr/lib/lua/5.1/zmq/init.lua'
+                no file './zmq.so'
+                no file '/usr/lib/lua/5.1/zmq.so'
+                no file '/usr/lib/lua/5.1/loadall.so'
+        stack traceback:
+                [C]: in function 'require'
+                client.lua:21: in main chunk
+                [C]: ?
+
+        可以看到上面提示找不到zmq.so文件,那要怎么做呢?
+        下面有有几种方案可供选择:
+        第一: 把build/目录下的zmq.so文件拷贝到example/目录下;
+
+        第二: 把/usr/local/lib/lua/5.1/* 统统拷贝到 /usr/share/lib/lua/5.1/ 下
+            #cp -r /usr/local/lib/lua/5.1/* /usr/share/lua/5.1/
+
+        第三: 把/usr/local/lib 追加到 /etc/ld.so.conf文件 另起一行;
+              然后把/usr/local/lib/lua/5.1/zmq.so拷贝到/usr/local/lib/
+            #echo "/usr/local/lib" >> /etc/ld.so.conf
+            #cp /usr/local/lib/lua/5.1/zmq.so /usr/local/lib/
+
+        第四: 修改lua代码,在每个lua文件头部添加 
+            package.path = "/usr/local/lib/lua/5.1/?.lua;"
+            package.cpath = "/usr/local/lib/lua/5.1/?.so;"
+
+            如果是nginx服务下执行lua脚本,需要在nginx.conf文件中添加
+            lua_package_path = "/usr/local/lib/lua/5.1/?.lua;";
+            lua_package_cpath = "/usr/local/lib/lua/5.1/?.so;";

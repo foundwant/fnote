@@ -1,0 +1,8 @@
+1.使用putty自动连接虚拟Linux环境:
+    桌面putty快捷键,右键属性,快捷方式选项卡,目标(T)一栏中,在最后输入如下内容:
+    -load "centos" -l "foundwant" -pw "123321"
+    其中,centos是putty中保存的Linux配置名称, foundwant和"123321"是登陆用户名和密码;
+
+2.使用Sublime Text远程连接编辑虚拟机文件;
+    使用SFTP/FTP插件;通过Edit Server新建一个虚拟配置;
+    最后通过快捷键Ctrl+R,B就可以调出连接列表,选择连接文件即可;

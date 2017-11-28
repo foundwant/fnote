@@ -1,0 +1,31 @@
+zeromq-4.1.4版本在安装lua-zmq等套件的时候有bug
+	提示找不到zmq_event_t结构,是因为作者解释称在4.1.x~4.1.4版本中删除了该结构体定义导致的;
+	建议安装4.0的稳定版4.0.8, 或者4.1的更高版本然后自己添加补丁;
+
+[补丁]:关于这里的问题解决,作者已经给出了方案
+	进入安装包的src/目录, 在zmq.h文件中添加如下结构
+
+    /*  Socket event data  */
+    typedef struct {
+        uint16_t event;  // id of the event as bitfield
+        int32_t  value ; // value is either error code, fd or reconnect interval
+    } zmq_event_t;
+
+
+1.  在正常安装zeromq的过程中,会提示找不到libsodium这个库,但是正常学习不需要这个库;
+    所以在配置zmq的时候,我们不需要把这个编译进来,所以如下操作:
+    ./configure -with-libsodium=no 即可;
+
+
+2.  在编译安装完zmq库之后,我们需要通过示例编译zmq程序;
+    这时我们发现,zmq api的include文件和lib文件都被默认编译在
+    /usr/local/目录下,所以我们需要配置路径;
+    找到/etc/ld.so.conf.d目录,新建一个zmq.conf文件,在该文件中输入以下内容:
+    /usr/local/lib保存退出,然后通过执行ldconfig命令新建缓存;
+    以上操作后,在我们gcc编译代码时就可以找到*zmq*.so相关的库了;
+    以下是gcc示例:
+        gcc -c hwserver.c -o hwserver -lzmq
+    其中-lzmq,就是指定需要的库文件.
+
+3.  修改~/.bashrc_profile文件,添加 PATH=$PATH:/usr/local/bin:/usr/local/sbin, 
+    保存退出再ldconfig

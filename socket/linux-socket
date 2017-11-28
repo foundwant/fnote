@@ -1,0 +1,44 @@
+字节序(Byte Order):
+ 1.主机字节序 (Host Byte Order)
+    因机器而异,一般为小顶端
+
+ 2.网络字节序 (Network Byte Order)
+    大顶端
+
+字节序转换:
+    htons() host to network short
+    htonl() host to network long
+    ntohs() network to host short
+    ntohl() network to host long
+
+在进行网络通信时,需要在送出数据以前将数值转换为 Network Byte Order,
+并在收到之后将数值转换回 Host Byte Order
+
+
+
+第一步:
+    int getaddrinfo(
+            const char *note,               //主机名或IP地址
+            const char *service,            //服务名或port端口
+            const struct addrinfo *hints,   //前些步骤已经填好的struct addrinfo信息
+            struct addrinfo **res           //返回
+    );
+
+    示例:
+    int status;
+    struct addrinfo hints;
+    struct addrinfo *servinfo;
+
+    //填写addrinfo结构信息
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_sockettype = SOCK_STREAM;
+    hints.ai_flags = AI_PASSIVE;  //自动填写本地地址
+
+    if((status = getaddrinfo(NULL, "3490", &hints, &servinfo)) != 0)
+    {
+        fprintf(stderr, "getaddrinfo error:%s\n", gai_strerror(status));
+        exit(1);
+    }
+
+    freeaddrinfo(servinfo);
