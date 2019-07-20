@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5C90BA0E-5648-4E98-83E7-2171181CF471}</ProjectGuid>
+    <RootNamespace>LuaModule</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>LuaModule</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27625.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <TargetName>$(ProjectName)d64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)64</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/D_CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\cjson\dtoa.c" />
+    <ClCompile Include="src\cjson\g_fmt.c" />
+    <ClCompile Include="src\cjson\lua_cjson.c" />
+    <ClCompile Include="src\cjson\strbuf.c" />
+    <ClCompile Include="src\LuaModule.cpp" />
+    <ClCompile Include="src\luasocket\auxiliar.c" />
+    <ClCompile Include="src\luasocket\buffer.c" />
+    <ClCompile Include="src\luasocket\compat.c" />
+    <ClCompile Include="src\luasocket\except.c" />
+    <ClCompile Include="src\luasocket\inet.c" />
+    <ClCompile Include="src\luasocket\io.c" />
+    <ClCompile Include="src\luasocket\luasocket.c" />
+    <ClCompile Include="src\luasocket\mime.c" />
+    <ClCompile Include="src\luasocket\options.c" />
+    <ClCompile Include="src\luasocket\select.c" />
+    <ClCompile Include="src\luasocket\tcp.c" />
+    <ClCompile Include="src\luasocket\timeout.c" />
+    <ClCompile Include="src\luasocket\udp.c" />
+    <ClCompile Include="src\luasocket\wsocket.c" />
+    <ClCompile Include="src\luasql\ls_odbc.c" />
+    <ClCompile Include="src\luasql\luasql.c" />
+    <ClCompile Include="src\LuaWrapper.cpp" />
+    <ClCompile Include="src\lua\lapi.c" />
+    <ClCompile Include="src\lua\lauxlib.c" />
+    <ClCompile Include="src\lua\lbaselib.c" />
+    <ClCompile Include="src\lua\lbitlib.c" />
+    <ClCompile Include="src\lua\lcode.c" />
+    <ClCompile Include="src\lua\lcorolib.c" />
+    <ClCompile Include="src\lua\lctype.c" />
+    <ClCompile Include="src\lua\ldblib.c" />
+    <ClCompile Include="src\lua\ldebug.c" />
+    <ClCompile Include="src\lua\ldo.c" />
+    <ClCompile Include="src\lua\ldump.c" />
+    <ClCompile Include="src\lua\lfunc.c" />
+    <ClCompile Include="src\lua\lgc.c" />
+    <ClCompile Include="src\lua\linit.c" />
+    <ClCompile Include="src\lua\liolib.c" />
+    <ClCompile Include="src\lua\llex.c" />
+    <ClCompile Include="src\lua\lmathlib.c" />
+    <ClCompile Include="src\lua\lmem.c" />
+    <ClCompile Include="src\lua\loadlib.c" />
+    <ClCompile Include="src\lua\lobject.c" />
+    <ClCompile Include="src\lua\lopcodes.c" />
+    <ClCompile Include="src\lua\loslib.c" />
+    <ClCompile Include="src\lua\lparser.c" />
+    <ClCompile Include="src\lua\lstate.c" />
+    <ClCompile Include="src\lua\lstring.c" />
+    <ClCompile Include="src\lua\lstrlib.c" />
+    <ClCompile Include="src\lua\ltable.c" />
+    <ClCompile Include="src\lua\ltablib.c" />
+    <ClCompile Include="src\lua\ltm.c" />
+    <ClCompile Include="src\lua\lundump.c" />
+    <ClCompile Include="src\lua\lutf8lib.c" />
+    <ClCompile Include="src\lua\lvm.c" />
+    <ClCompile Include="src\lua\lzio.c" />
+    <ClCompile Include="src\md5\compat-5.2.c" />
+    <ClCompile Include="src\md5\md5.c" />
+    <ClCompile Include="src\md5\md5lib.c" />
+    <ClCompile Include="src\util\util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\cjson\dtoa_config.h" />
+    <ClInclude Include="src\cjson\fpconv.h" />
+    <ClInclude Include="src\cjson\lua_cjson.h" />
+    <ClInclude Include="src\cjson\strbuf.h" />
+    <ClInclude Include="src\LuaModule.hpp" />
+    <ClInclude Include="src\luasocket\auxiliar.h" />
+    <ClInclude Include="src\luasocket\buffer.h" />
+    <ClInclude Include="src\luasocket\compat.h" />
+    <ClInclude Include="src\luasocket\except.h" />
+    <ClInclude Include="src\luasocket\inet.h" />
+    <ClInclude Include="src\luasocket\io.h" />
+    <ClInclude Include="src\luasocket\luasocket.h" />
+    <ClInclude Include="src\luasocket\mime.h" />
+    <ClInclude Include="src\luasocket\options.h" />
+    <ClInclude Include="src\luasocket\pierror.h" />
+    <ClInclude Include="src\luasocket\select.h" />
+    <ClInclude Include="src\luasocket\socket.h" />
+    <ClInclude Include="src\luasocket\tcp.h" />
+    <ClInclude Include="src\luasocket\timeout.h" />
+    <ClInclude Include="src\luasocket\udp.h" />
+    <ClInclude Include="src\luasocket\wsocket.h" />
+    <ClInclude Include="src\luasql\luasql.h" />
+    <ClInclude Include="src\LuaWrapper.hpp" />
+    <ClInclude Include="src\lua\lapi.h" />
+    <ClInclude Include="src\lua\lauxlib.h" />
+    <ClInclude Include="src\lua\lcode.h" />
+    <ClInclude Include="src\lua\lctype.h" />
+    <ClInclude Include="src\lua\ldebug.h" />
+    <ClInclude Include="src\lua\ldo.h" />
+    <ClInclude Include="src\lua\lfunc.h" />
+    <ClInclude Include="src\lua\lgc.h" />
+    <ClInclude Include="src\lua\llex.h" />
+    <ClInclude Include="src\lua\llimits.h" />
+    <ClInclude Include="src\lua\lmem.h" />
+    <ClInclude Include="src\lua\lobject.h" />
+    <ClInclude Include="src\lua\lopcodes.h" />
+    <ClInclude Include="src\lua\lparser.h" />
+    <ClInclude Include="src\lua\lprefix.h" />
+    <ClInclude Include="src\lua\lstate.h" />
+    <ClInclude Include="src\lua\lstring.h" />
+    <ClInclude Include="src\lua\ltable.h" />
+    <ClInclude Include="src\lua\ltm.h" />
+    <ClInclude Include="src\lua\lua.h" />
+    <ClInclude Include="src\lua\lua.hpp" />
+    <ClInclude Include="src\lua\luaconf.h" />
+    <ClInclude Include="src\lua\lualib.h" />
+    <ClInclude Include="src\lua\lundump.h" />
+    <ClInclude Include="src\lua\lvm.h" />
+    <ClInclude Include="src\lua\lzio.h" />
+    <ClInclude Include="src\md5\compat-5.2.h" />
+    <ClInclude Include="src\md5\md5.h" />
+    <ClInclude Include="src\tzt\md_interface.hpp" />
+    <ClInclude Include="src\util\util.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LuaModule.def" />
+    <None Include="src\luasocket\ftp.lua" />
+    <None Include="src\luasocket\headers.lua" />
+    <None Include="src\luasocket\http.lua" />
+    <None Include="src\luasocket\ltn12.lua" />
+    <None Include="src\luasocket\makefile" />
+    <None Include="src\luasocket\mbox.lua" />
+    <None Include="src\luasocket\mime.lua" />
+    <None Include="src\luasocket\smtp.lua" />
+    <None Include="src\luasocket\socket.lua" />
+    <None Include="src\luasocket\tp.lua" />
+    <None Include="src\luasocket\url.lua" />
+    <None Include="src\lua\Makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

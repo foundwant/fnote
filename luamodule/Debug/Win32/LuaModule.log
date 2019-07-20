@@ -1,0 +1,109 @@
+﻿  md5lib.c
+  md5.c
+  compat-5.2.c
+  lzio.c
+  lvm.c
+  lutf8lib.c
+  lundump.c
+  ltm.c
+  ltablib.c
+  ltable.c
+  lstrlib.c
+  lstring.c
+  lstate.c
+  lparser.c
+  loslib.c
+  lopcodes.c
+  lobject.c
+  loadlib.c
+  lmem.c
+  lmathlib.c
+  正在生成代码...
+  正在编译...
+  llex.c
+  liolib.c
+  linit.c
+  lgc.c
+  lfunc.c
+  ldump.c
+  ldo.c
+  ldebug.c
+  ldblib.c
+  lctype.c
+  lcorolib.c
+  lcode.c
+  lbitlib.c
+  lbaselib.c
+  lauxlib.c
+  lapi.c
+d:\git\gklua\src\lua\lapi.c(398): warning C4244: “return”: 从“lua_Unsigned”转换到“std::size_t”，可能丢失数据
+  luasql.c
+d:\git\gklua\src\luasql\luasql.c(57): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+d:\git\gklua\src\luasql\luasql.c(59): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+  ls_odbc.c
+  wsocket.c
+d:\git\gklua\src\luasocket\wsocket.c(319): warning C4996: 'gethostbyaddr': Use getnameinfo() or GetNameInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2216): note: 参见“gethostbyaddr”的声明
+d:\git\gklua\src\luasocket\wsocket.c(325): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(2238): note: 参见“gethostbyname”的声明
+  udp.c
+  正在生成代码...
+  正在编译...
+  timeout.c
+  tcp.c
+  select.c
+  options.c
+d:\git\gklua\src\luasocket\options.c(39): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+d:\git\gklua\src\luasocket\options.c(52): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+d:\git\gklua\src\luasocket\options.c(274): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1868): note: 参见“inet_ntoa”的声明
+  mime.c
+  luasocket.c
+  io.c
+  inet.c
+d:\git\gklua\src\luasocket\inet.c(143): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1868): note: 参见“inet_ntoa”的声明
+d:\git\gklua\src\luasocket\inet.c(346): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1868): note: 参见“inet_ntoa”的声明
+d:\git\gklua\src\luasocket\inet.c(507): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(2254): note: 参见“sscanf”的声明
+  except.c
+  compat.c
+  buffer.c
+  auxiliar.c
+d:\git\gklua\src\luasocket\auxiliar.c(57): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+d:\git\gklua\src\luasocket\auxiliar.c(94): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+d:\git\gklua\src\luasocket\auxiliar.c(108): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+  strbuf.c
+  lua_cjson.c
+d:\git\gklua\src\cjson\fpconv.h(11): warning C4005: “isnan”: 宏重定义
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(264): note: 参见“isnan”的前一个定义
+d:\git\gklua\src\cjson\fpconv.h(12): warning C4005: “isinf”: 宏重定义
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(263): note: 参见“isinf”的前一个定义
+d:\git\gklua\src\cjson\lua_cjson.c(232): warning C4244: “=”: 从“lua_Integer”转换到“int”，可能丢失数据
+d:\git\gklua\src\cjson\lua_cjson.c(516): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  g_fmt.c
+  dtoa.c
+d:\git\gklua\src\cjson\dtoa.c(663): warning C4244: “=”: 从“uint64_t”转换到“uint32_t”，可能丢失数据
+d:\git\gklua\src\cjson\dtoa.c(857): warning C4244: “=”: 从“uint64_t”转换到“uint32_t”，可能丢失数据
+d:\git\gklua\src\cjson\dtoa.c(3390): warning C4244: “=”: 从“double”转换到“uint32_t”，可能丢失数据
+d:\git\gklua\src\cjson\dtoa.c(3563): warning C4018: “<=”: 有符号/无符号不匹配
+d:\git\gklua\src\cjson\dtoa.c(3983): warning C4244: “=”: 从“double”转换到“int32_t”，可能丢失数据
+  正在生成代码...
+  LuaWrapper.cpp
+d:\git\gklua\src\luawrapper.cpp(500): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: 参见“sprintf”的声明
+  LuaModule.cpp
+  正在生成代码...
+dtoa.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+    正在创建库 D:\Git\GKlua\Debug\Win32\LuaModuled.lib 和对象 D:\Git\GKlua\Debug\Win32\LuaModuled.exp
+LuaModuled.exp : warning LNK4070: .EXP 中的 /OUT:LuaModule.dll 指令与输出文件名“D:\Git\GKlua\Debug\Win32\LuaModuled.dll”不同；忽略指令
+  LuaModule.vcxproj -> D:\Git\GKlua\Debug\Win32\LuaModuled.dll
+  LuaModule.vcxproj -> D:\Git\GKlua\Debug\Win32\LuaModuled.pdb (Full PDB)
