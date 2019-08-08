@@ -1,0 +1,21 @@
+本版本集成kafka客户端
+
+openssl库,如何编译,自行查找
+zlib库,下载官方源码VS编译即可
+
+zstd库,
+https://github.com/facebook/zstd
+
+cyrus-sasl库
+https://github.com/cyrusimap/cyrus-sasl
+
+方式，引入静态库lib，引入头文件;
+
+引入头文件目录,路径换掉
+    E:\CODE_VIEW\OpenSSL\openssl_x86\include
+    E:\CODE_VIEW\zlib\x86
+    E:\CODE_VIEW\zstd\x86\include
+
+链接输入
+    libzstd.lib
+    zlibwapi.lib

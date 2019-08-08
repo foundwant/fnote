@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5C90BA0E-5648-4E98-83E7-2171181CF471}</ProjectGuid>
+    <RootNamespace>LuaModule</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>LuaModule</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27625.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <TargetName>$(ProjectName)d64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)64</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;_USRDLL;_WINSOCK_DEPRECATED_NO_WARNINGS;LIBRDKAFKA_EXPORTS;ZLIB_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>E:\CODE_VIEW\OpenSSL\openssl_x86\include;E:\CODE_VIEW\zlib\x86;E:\CODE_VIEW\zstd\x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;libeay32.lib;ssleay32.lib;zlibwapi.lib;libzstd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\CODE_VIEW\OpenSSL\openssl_x86\lib;E:\CODE_VIEW\zlib\x86;E:\CODE_VIEW\zstd\x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DEMO_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;ZLIB_WINAPI;LIBRDKAFKA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>E:\CODE_VIEW\OpenSSL\openssl_x86\include;E:\CODE_VIEW\zlib\x86;E:\CODE_VIEW\zstd\x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>LuaModule.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalLibraryDirectories>E:\CODE_VIEW\OpenSSL\openssl_x64\lib;E:\CODE_VIEW\zlib\x64;E:\CODE_VIEW\zstd\x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;wsock32.lib;libeay32.lib;ssleay32.lib;zlibstat.lib;libzstd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="LuaModule.def" />
+    <None Include="LuaModule.vcproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\cjson\dtoa.c" />
+    <ClCompile Include="src\cjson\g_fmt.c" />
+    <ClCompile Include="src\cjson\lua_cjson.c" />
+    <ClCompile Include="src\cjson\strbuf.c" />
+    <ClCompile Include="src\kafka\kafka.c" />
+    <ClCompile Include="src\librdkafka\crc32c.c" />
+    <ClCompile Include="src\librdkafka\lz4.c" />
+    <ClCompile Include="src\librdkafka\lz4frame.c" />
+    <ClCompile Include="src\librdkafka\lz4hc.c" />
+    <ClCompile Include="src\librdkafka\rdaddr.c" />
+    <ClCompile Include="src\librdkafka\rdavl.c" />
+    <ClCompile Include="src\librdkafka\rdbuf.c" />
+    <ClCompile Include="src\librdkafka\rdcrc32.c" />
+    <ClCompile Include="src\librdkafka\rddl.c" />
+    <ClCompile Include="src\librdkafka\rdgz.c" />
+    <ClCompile Include="src\librdkafka\rdhdrhistogram.c" />
+    <ClCompile Include="src\librdkafka\rdkafka.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_admin.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_assignor.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_aux.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_background.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_broker.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_buf.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_cert.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_cgrp.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_conf.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_event.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_feature.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_header.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_idempotence.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_interceptor.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_lz4.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_metadata.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_metadata_cache.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_msg.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_msgset_reader.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_msgset_writer.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_offset.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_op.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_partition.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_pattern.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_plugin.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_queue.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_range_assignor.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_request.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_roundrobin_assignor.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_sasl.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_sasl_plain.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_sasl_win32.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_ssl.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_subscription.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_timer.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_topic.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_transport.c" />
+    <ClCompile Include="src\librdkafka\rdkafka_zstd.c" />
+    <ClCompile Include="src\librdkafka\rdlist.c" />
+    <ClCompile Include="src\librdkafka\rdlog.c" />
+    <ClCompile Include="src\librdkafka\rdmurmur2.c" />
+    <ClCompile Include="src\librdkafka\rdports.c" />
+    <ClCompile Include="src\librdkafka\rdrand.c" />
+    <ClCompile Include="src\librdkafka\rdregex.c" />
+    <ClCompile Include="src\librdkafka\rdstring.c" />
+    <ClCompile Include="src\librdkafka\rdunittest.c" />
+    <ClCompile Include="src\librdkafka\rdvarint.c" />
+    <ClCompile Include="src\librdkafka\regexp.c" />
+    <ClCompile Include="src\librdkafka\snappy.c" />
+    <ClCompile Include="src\librdkafka\tinycthread.c" />
+    <ClCompile Include="src\librdkafka\tinycthread_extra.c" />
+    <ClCompile Include="src\librdkafka\xxhash.c" />
+    <ClCompile Include="src\LuaModule.cpp" />
+    <ClCompile Include="src\luasocket\auxiliar.c" />
+    <ClCompile Include="src\luasocket\buffer.c" />
+    <ClCompile Include="src\luasocket\compat.c" />
+    <ClCompile Include="src\luasocket\except.c" />
+    <ClCompile Include="src\luasocket\inet.c" />
+    <ClCompile Include="src\luasocket\io.c" />
+    <ClCompile Include="src\luasocket\luasocket.c" />
+    <ClCompile Include="src\luasocket\mime.c" />
+    <ClCompile Include="src\luasocket\options.c" />
+    <ClCompile Include="src\luasocket\select.c" />
+    <ClCompile Include="src\luasocket\tcp.c" />
+    <ClCompile Include="src\luasocket\timeout.c" />
+    <ClCompile Include="src\luasocket\udp.c" />
+    <ClCompile Include="src\luasocket\wsocket.c" />
+    <ClCompile Include="src\luasql\ls_odbc.c" />
+    <ClCompile Include="src\luasql\luasql.c" />
+    <ClCompile Include="src\LuaWrapper.cpp" />
+    <ClCompile Include="src\lua\lapi.c" />
+    <ClCompile Include="src\lua\lauxlib.c" />
+    <ClCompile Include="src\lua\lbaselib.c" />
+    <ClCompile Include="src\lua\lcode.c" />
+    <ClCompile Include="src\lua\ldblib.c" />
+    <ClCompile Include="src\lua\ldebug.c" />
+    <ClCompile Include="src\lua\ldo.c" />
+    <ClCompile Include="src\lua\ldump.c" />
+    <ClCompile Include="src\lua\lfunc.c" />
+    <ClCompile Include="src\lua\lgc.c" />
+    <ClCompile Include="src\lua\linit.c" />
+    <ClCompile Include="src\lua\liolib.c" />
+    <ClCompile Include="src\lua\llex.c" />
+    <ClCompile Include="src\lua\lmathlib.c" />
+    <ClCompile Include="src\lua\lmem.c" />
+    <ClCompile Include="src\lua\loadlib.c" />
+    <ClCompile Include="src\lua\lobject.c" />
+    <ClCompile Include="src\lua\lopcodes.c" />
+    <ClCompile Include="src\lua\loslib.c" />
+    <ClCompile Include="src\lua\lparser.c" />
+    <ClCompile Include="src\lua\lstate.c" />
+    <ClCompile Include="src\lua\lstring.c" />
+    <ClCompile Include="src\lua\lstrlib.c" />
+    <ClCompile Include="src\lua\ltable.c" />
+    <ClCompile Include="src\lua\ltablib.c" />
+    <ClCompile Include="src\lua\ltm.c" />
+    <ClCompile Include="src\lua\lua.c" />
+    <ClCompile Include="src\lua\lundump.c" />
+    <ClCompile Include="src\lua\lvm.c" />
+    <ClCompile Include="src\lua\lzio.c" />
+    <ClCompile Include="src\lua\print.c" />
+    <ClCompile Include="src\md5\md5.c" />
+    <ClCompile Include="src\md5\md5lib.c" />
+    <ClCompile Include="src\util\util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\cjson\dtoa_config.h" />
+    <ClInclude Include="src\cjson\fpconv.h" />
+    <ClInclude Include="src\cjson\strbuf.h" />
+    <ClInclude Include="src\librdkafka\crc32c.h" />
+    <ClInclude Include="src\librdkafka\lz4.h" />
+    <ClInclude Include="src\librdkafka\lz4frame.h" />
+    <ClInclude Include="src\librdkafka\lz4frame_static.h" />
+    <ClInclude Include="src\librdkafka\lz4hc.h" />
+    <ClInclude Include="src\librdkafka\lz4opt.h" />
+    <ClInclude Include="src\librdkafka\queue.h" />
+    <ClInclude Include="src\librdkafka\rd.h" />
+    <ClInclude Include="src\librdkafka\rdaddr.h" />
+    <ClInclude Include="src\librdkafka\rdatomic.h" />
+    <ClInclude Include="src\librdkafka\rdavg.h" />
+    <ClInclude Include="src\librdkafka\rdavl.h" />
+    <ClInclude Include="src\librdkafka\rdbuf.h" />
+    <ClInclude Include="src\librdkafka\rdcrc32.h" />
+    <ClInclude Include="src\librdkafka\rddl.h" />
+    <ClInclude Include="src\librdkafka\rdendian.h" />
+    <ClInclude Include="src\librdkafka\rdfloat.h" />
+    <ClInclude Include="src\librdkafka\rdgz.h" />
+    <ClInclude Include="src\librdkafka\rdhdrhistogram.h" />
+    <ClInclude Include="src\librdkafka\rdinterval.h" />
+    <ClInclude Include="src\librdkafka\rdkafka.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_admin.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_assignor.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_aux.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_broker.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_buf.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_cert.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_cgrp.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_conf.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_confval.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_event.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_feature.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_header.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_idempotence.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_int.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_interceptor.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_lz4.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_metadata.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_msg.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_msgbatch.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_msgset.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_offset.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_op.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_partition.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_pattern.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_plugin.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_proto.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_queue.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_request.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_sasl.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_sasl_int.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_ssl.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_timer.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_topic.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_transport.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_transport_int.h" />
+    <ClInclude Include="src\librdkafka\rdkafka_zstd.h" />
+    <ClInclude Include="src\librdkafka\rdlist.h" />
+    <ClInclude Include="src\librdkafka\rdlog.h" />
+    <ClInclude Include="src\librdkafka\rdmurmur2.h" />
+    <ClInclude Include="src\librdkafka\rdports.h" />
+    <ClInclude Include="src\librdkafka\rdposix.h" />
+    <ClInclude Include="src\librdkafka\rdrand.h" />
+    <ClInclude Include="src\librdkafka\rdregex.h" />
+    <ClInclude Include="src\librdkafka\rdsignal.h" />
+    <ClInclude Include="src\librdkafka\rdstring.h" />
+    <ClInclude Include="src\librdkafka\rdsysqueue.h" />
+    <ClInclude Include="src\librdkafka\rdtime.h" />
+    <ClInclude Include="src\librdkafka\rdtypes.h" />
+    <ClInclude Include="src\librdkafka\rdunittest.h" />
+    <ClInclude Include="src\librdkafka\rdvarint.h" />
+    <ClInclude Include="src\librdkafka\rdwin32.h" />
+    <ClInclude Include="src\librdkafka\regexp.h" />
+    <ClInclude Include="src\librdkafka\snappy.h" />
+    <ClInclude Include="src\librdkafka\snappy_compat.h" />
+    <ClInclude Include="src\librdkafka\tinycthread.h" />
+    <ClInclude Include="src\librdkafka\tinycthread_extra.h" />
+    <ClInclude Include="src\librdkafka\win32_config.h" />
+    <ClInclude Include="src\librdkafka\xxhash.h" />
+    <ClInclude Include="src\LuaModule.hpp" />
+    <ClInclude Include="src\luasocket\auxiliar.h" />
+    <ClInclude Include="src\luasocket\buffer.h" />
+    <ClInclude Include="src\luasocket\compat.h" />
+    <ClInclude Include="src\luasocket\except.h" />
+    <ClInclude Include="src\luasocket\inet.h" />
+    <ClInclude Include="src\luasocket\io.h" />
+    <ClInclude Include="src\luasocket\luasocket.h" />
+    <ClInclude Include="src\luasocket\mime.h" />
+    <ClInclude Include="src\luasocket\options.h" />
+    <ClInclude Include="src\luasocket\pierror.h" />
+    <ClInclude Include="src\luasocket\select.h" />
+    <ClInclude Include="src\luasocket\socket.h" />
+    <ClInclude Include="src\luasocket\tcp.h" />
+    <ClInclude Include="src\luasocket\timeout.h" />
+    <ClInclude Include="src\luasocket\udp.h" />
+    <ClInclude Include="src\luasocket\wsocket.h" />
+    <ClInclude Include="src\luasql\luasql.h" />
+    <ClInclude Include="src\LuaWrapper.hpp" />
+    <ClInclude Include="src\lua\lapi.h" />
+    <ClInclude Include="src\lua\lauxlib.h" />
+    <ClInclude Include="src\lua\lcode.h" />
+    <ClInclude Include="src\lua\ldebug.h" />
+    <ClInclude Include="src\lua\ldo.h" />
+    <ClInclude Include="src\lua\lfunc.h" />
+    <ClInclude Include="src\lua\lgc.h" />
+    <ClInclude Include="src\lua\llex.h" />
+    <ClInclude Include="src\lua\llimits.h" />
+    <ClInclude Include="src\lua\lmem.h" />
+    <ClInclude Include="src\lua\lobject.h" />
+    <ClInclude Include="src\lua\lopcodes.h" />
+    <ClInclude Include="src\lua\lparser.h" />
+    <ClInclude Include="src\lua\lstate.h" />
+    <ClInclude Include="src\lua\lstring.h" />
+    <ClInclude Include="src\lua\ltable.h" />
+    <ClInclude Include="src\lua\ltm.h" />
+    <ClInclude Include="src\lua\lua.h" />
+    <ClInclude Include="src\lua\lua.hpp" />
+    <ClInclude Include="src\lua\luaconf.h" />
+    <ClInclude Include="src\lua\lualib.h" />
+    <ClInclude Include="src\lua\lundump.h" />
+    <ClInclude Include="src\lua\lvm.h" />
+    <ClInclude Include="src\lua\lzio.h" />
+    <ClInclude Include="src\md5\md5.h" />
+    <ClInclude Include="src\md_interface.h" />
+    <ClInclude Include="src\tzt\md_interface.hpp" />
+    <ClInclude Include="src\util\util.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

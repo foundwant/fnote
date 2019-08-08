@@ -1,0 +1,25 @@
+; LuaModule.def : 声明 DLL 的模块参数。
+
+LIBRARY      "LuaModule"
+
+EXPORTS
+    DoModuleInit
+    DoModuleFree
+	DoModuleAction
+	DoBeforeAction
+	DoAfterAction
+	OnAnswerCallBackReturnAsIs
+	OnAnswerCallBackNoReturn
+	OnAnswerCallBack
+	luaopen_cjson
+	luaopen_mime_core
+	luaopen_socket_core
+;	luaopen_luasql_mysql
+;	luaopen_luasql_oci8
+	luaopen_luasql_odbc
+;	luaopen_luasql_postgres
+;	luaopen_luasql_sqlite
+;	luaopen_luasql_sqlite3
+;	luaopen_luasql_firebird
+	luaopen_md5_core
+	luaopen_kafka

@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="资源文件\x86">
+      <UniqueIdentifier>{329362c0-a9bc-4e97-a973-6ac98eeaf944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\x64">
+      <UniqueIdentifier>{0bce8923-ca4b-4223-82c9-c240a0487e48}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LuaModule.def">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="LuaModule.vcproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\LuaModule.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LuaWrapper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cjson\dtoa.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cjson\g_fmt.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cjson\lua_cjson.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cjson\strbuf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lapi.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lauxlib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lbaselib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lcode.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ldblib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ldebug.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ldo.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ldump.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lfunc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lgc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\linit.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\liolib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\llex.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lmathlib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lmem.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\loadlib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lobject.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lopcodes.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\loslib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lparser.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lstate.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lstring.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lstrlib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ltable.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ltablib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\ltm.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lua.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lundump.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lvm.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\lzio.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lua\print.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\md5\md5lib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\md5\md5.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\auxiliar.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\buffer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\compat.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\except.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\inet.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\io.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\luasocket.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\mime.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\options.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\select.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\tcp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\timeout.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\udp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasocket\wsocket.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasql\ls_odbc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\luasql\luasql.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\crc32c.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\lz4.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\lz4frame.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\lz4hc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdaddr.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdavl.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdbuf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdcrc32.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rddl.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdgz.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdhdrhistogram.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_admin.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_assignor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_aux.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_background.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_broker.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_buf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_cert.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_cgrp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_conf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_event.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_feature.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_header.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_idempotence.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_interceptor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_lz4.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_metadata.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_metadata_cache.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_msg.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_msgset_reader.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_msgset_writer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_offset.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_op.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_partition.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_pattern.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_plugin.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_queue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_range_assignor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_request.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_roundrobin_assignor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_sasl.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_sasl_plain.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_sasl_win32.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_ssl.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_subscription.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_timer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_topic.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_transport.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdlist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdlog.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdmurmur2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdports.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdrand.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdregex.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdstring.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdunittest.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdvarint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\regexp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\snappy.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\tinycthread.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\tinycthread_extra.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\xxhash.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kafka\kafka.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\librdkafka\rdkafka_zstd.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\md_interface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cjson\dtoa_config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cjson\fpconv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cjson\strbuf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaModule.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LuaWrapper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\util.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lapi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lauxlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lcode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\ldebug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\ldo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lfunc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lgc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\llex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\llimits.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lmem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lobject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lopcodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lparser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lstate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lstring.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\ltable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\ltm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lua.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\luaconf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lualib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lundump.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lvm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lzio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tzt\md_interface.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\md5\md5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lua\lua.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\auxiliar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\compat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\except.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\inet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\io.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\luasocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\mime.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\options.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\pierror.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\select.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\socket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\tcp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\timeout.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\udp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasocket\wsocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\luasql\luasql.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\crc32c.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\lz4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\lz4frame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\lz4frame_static.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\lz4hc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\lz4opt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdaddr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdatomic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdavg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdavl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdbuf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdcrc32.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rddl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdendian.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdfloat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdgz.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdhdrhistogram.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdinterval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_admin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_assignor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_aux.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_broker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_buf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_cert.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_cgrp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_conf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_confval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_event.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_feature.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_header.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_idempotence.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_int.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_interceptor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_lz4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_metadata.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_msg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_msgbatch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_msgset.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_offset.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_op.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_partition.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_pattern.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_plugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_proto.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_request.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_sasl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_sasl_int.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_ssl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_topic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_transport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_transport_int.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdlist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdlog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdmurmur2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdports.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdposix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdrand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdregex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdsignal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdstring.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdsysqueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdtime.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdtypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdunittest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdvarint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdwin32.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\regexp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\snappy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\snappy_compat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\tinycthread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\tinycthread_extra.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\win32_config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\xxhash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\librdkafka\rdkafka_zstd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
