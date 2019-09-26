@@ -1,0 +1,127 @@
+0.内核升级 (docker在Linux 4.x以下内核会报错, syslog)
+    #[URL:https://cloud.tencent.com/developer/article/1455002]
+
+    wget https://elrepo.org/linux/kernel/el7/x86_64/RPMS/elrepo-release-7.0-4.el7.elrepo.noarch.rpm
+    wget https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-lt-4.4.188-1.el7.elrepo.x86_64.rpm
+
+    yum update -y
+    # 导入公钥
+    rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+    # 安装7.x版本的ELRepo
+    rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+    # 安装新版本内核
+    yum --enablerepo=elrepo-kernel install kernel-lt -y
+
+    sed -i 's/GRUB_DEFAULT=saved/GRUB_DEFAULT=0/g' /etc/default/grub
+    #vim /etc/default/grub
+    #...
+    #GRUB_DEFAULT=0
+    #...
+
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+    reboot
+
+1. 更新系统包到最新
+    yum -y update
+
+2. 卸载旧版本
+    Older versions of Docker were called docker or docker-engine. 
+    If these are installed, uninstall them, along with associated dependencies
+    yum remove docker \
+              docker-client \
+              docker-client-latest \
+              docker-common \
+              docker-latest \
+              docker-latest-logrotate \
+              docker-logrotate \
+              docker-engine \
+              docker-selinux \
+              docker-engine-selinux
+
+    #如果有d-dcos, 删除网桥
+    # ifconfig docker0 down
+    # brctl delbr docker0
+    # ifconfig d-dcos down
+    # brctl delbr d-dcos
+
+3.安装docker
+    yum install -y yum-utils \
+                  device-mapper-persistent-data \
+                  lvm2
+
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    yum install docker-ce docker-ce-cli containerd.io
+    systemctl enable docker
+    systemctl start docker
+
+
+4.配置下载加速节点,/etc/docker/daemon.json(默认没有,手动创建), 添加加速镜像节点
+    {"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn","http://hub-mirror.c.163.com","https://registry.docker-cn.com"]}
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+
+
+5. /etc/yum.repo.d目录替换镜像库
+    cd /etc/yum.repo.d
+    mkdir repo_bak
+    mv CentOS* repo_bak
+    wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo
+    wget http://mirrors.aliyun.com/repo/Centos-7.repo
+    wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+    ldconfig
+
+
+
+
+docker build -t Name:Tag .
+
+docker run -dit <Name> /bin/bash
+
+docker ps
+docker stop <CONTAINER ID>
+docker stop $(docker ps -a -q)
+
+
+#在容器-d后台启动后,需要进入容器操作,使用如下
+docker exec -it <CONTAINER ID> /bin/bash
+
+#查看容器日志
+docker logs -f <CID>
+
+#停止容器
+docker container stop <CID>
+
+#删除容器
+docker {container} rm -f <CID>
+
+#清理所有exit状态的容器
+docker container prune
+
+
+
+#######################
+# 发布镜像到私有仓库
+#######################
+#以阿里云为例 https://cr.console.aliyun.com/cn-hangzhou/instances/repositories
+#登录https://account.aliyun.com/创建阿里云账号
+#创建命名空间和仓库信息
+#...
+
+#登录
+docker login --username=1204254599@qq.com registry.cn-hangzhou.aliyuncs.com
+
+#本地添加标签
+docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/foto/ngxlua:[镜像版本号]
+
+#本地推送到仓库
+docker push registry.cn-hangzhou.aliyuncs.com/foto/ngxlua:[镜像版本号]
+
+#从仓库拉取镜像
+docker pull registry.cn-hangzhou.aliyuncs.com/foto/ngxlua:[镜像版本号]
+
+
+#docker日志挂载
+    http://blog.shiqichan.com/Deploying-Nginx-with-Docker/
+    docker run -it -p 8080:80 -v `pwd`/logs:/var/log/nginx ngxlua:v1
