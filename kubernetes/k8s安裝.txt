@@ -1,0 +1,309 @@
+
+#重装前检查
+    #删除网络配置
+        rm -fr /var/lib/cni
+    #删除dcos网桥
+        ifconfig d-dcos down
+        brctl delbr d-dcos
+    #设置hostname
+        sysctl kernel.hostname=master-150
+
+
+安装集成:
+    https://kuboard.cn/install/install-k8s.html
+
+Dashboard集成:
+    jianshu.com/p/5ff6e26d1912
+    https://jimmysong.io/posts/kubernetes-dashboard-installation/
+    https://www.cnblogs.com/RainingNight/p/deploying-k8s-dashboard-ui.html
+    https://kuboard.cn/install/install-dashboard.html
+    登录账号问题:https://andrewpqc.github.io/2018/04/25/k8s-dashboard-auth/
+
+Google打不开解决：
+    https://www.cnblogs.com/twobrother/p/11151523.html
+
+    kubectl get svc -n kube-system
+    kubectl get pod -n kube-system
+
+
+Dashboard安装
+    下载kubernetes-dashboard.yaml
+        $ wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+
+    修改镜像下载地址:
+        reg.qiniu.com/k8s/kubernetes-dashboard-amd64:v1.8.3
+
+    生成证书
+        $ openssl req -newkey rsa:4096 -nodes -sha256 -keyout dashboard.key -x509 -days 365 -out dashboard.crt
+        将新生成的dashboard.crt和dashboard.key两个文件拷贝到/certs/目录
+        $ cp -R dashboard.* /certs/
+
+    执行yaml文件
+        kubectl apply -f kubernetes-dashboard.yaml
+
+    暴露端口服务:
+        $ kubectl edit service kubernetes-dashboard -n kube-system
+            将kubernetes-dashboard的service变为外部可路由。将service的类型由默认的ClusterIP改为NodePort
+
+        $ kubectl get service kubernetes-dashboard -n kube-system
+            查看修改后的端口
+
+        或者执行下面语句,同样修改为NodePort方式
+        $ kubectl patch svc kubernetes-dashboard -p '{"spec":{"type":"NodePort"}}' -n kube-system
+
+    接下来要设置登录token [dashboard账号设置:https://andrewpqc.github.io/2018/04/25/k8s-dashboard-auth/]
+    cat << EOF > admin-token.yaml
+        kind: ClusterRoleBinding
+        apiVersion: rbac.authorization.k8s.io/v1beta1
+        metadata:
+          name: admin
+          annotations:
+            rbac.authorization.kubernetes.io/autoupdate: "true"
+        roleRef:
+          kind: ClusterRole
+          name: cluster-admin
+          apiGroup: rbac.authorization.k8s.io
+        subjects:
+        - kind: ServiceAccount
+          name: admin
+          namespace: kube-system
+        ---
+        kind: ServiceAccount
+        apiVersion: v1
+        metadata:
+          name: admin
+          namespace: kube-system
+          labels:
+            kubernetes.io/cluster-service: "true"
+            addonmanager.kubernetes.io/mode: Reconcile
+    EOF
+
+    kubectl describe pod kubernetes-dashboard-8594bd9565-rjd2n -n kube-system
+    kubectl delete   pod kubernetes-dashboard-8594bd9565-rjd2n -n kube-system
+
+    #查看登录Dashboard的token
+    kubeadm token create --print-join-command
+    kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+
+    kubectl get secrets -n kube-system
+    kubectl describe secret/admin-token-vsjc2 -n kube-system
+
+
+#################################################
+# 部署应用到K8S
+#################################################
+
+#登录docker仓库
+docker login --username=1204254599@qq.com registry.cn-hangzhou.aliyuncs.com
+
+#新建一个命名空间deploys
+cat << EOF > deploy_namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: deploys
+  labels:
+    name: deploys
+EOF
+
+#为新建的空间创建Secret
+#当Pod从私用仓库拉取镜像时,k8s集群使用类型为docker-registry 的
+#Secret 来提供身份认证
+kubectl -n deploys create secret docker-registry registry-key \
+--docker-server=registry.cn-hangzhou.aliyuncs.com \
+--docker-username=1204254599@qq.com \
+--docker-password=abccba123321 \
+--docker-email=1204254599@qq.com
+
+#创建deployment
+#参照[https://devopscube.com/kubernetes-deployment-tutorial/]
+cat << EOF > ngx_deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngxlua
+  namespace: deploys
+  labels:
+    app: ngxlua
+  annotations:
+    monitoring: "true"
+spec:
+  selector:
+    matchLabels:
+       app: ngxlua
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ngxlua
+      namespace: deploys
+    spec:
+      imagePullSecrets:
+      - name: registry-key
+      containers:
+      - name: ngxlua
+        image: registry.cn-hangzhou.aliyuncs.com/foto/ngxlua:v1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngxlua
+  namespace: deploys
+  labels:
+    app: ngxlua
+spec:
+  type: NodePort
+  selector:
+    app: ngxlua
+  ports:
+  - nodePort: 30080
+    port: 80
+    protocol: TCP
+    targetPort: 80
+EOF
+
+##
+## The type property in the Service's spec determines how the service is exposed to the network. 
+## It changes where a Service is able to be accessed from. The possible types are ClusterIP, NodePort, and LoadBalancer
+
+## ClusterIP – The default value. The service is only accessible from within the Kubernetes cluster – you can’t make requests to your Pods from outside the cluster!
+## NodePort – This makes the service accessible on a static port on each Node in the cluster. This means that the service can handle requests that originate from outside the cluster.
+## LoadBalancer – The service becomes accessible externally through a cloud provider's load balancer functionality. GCP, AWS, Azure, and OpenStack offer this functionality. 
+##                The cloud provider will create a load balancer, which then automatically routes requests to your Kubernetes Service
+## selector:  forward requests to pods with label of "app:ngxlua"
+## nodePort:  access service via this external port number
+## port:      port number exposed internally in cluster
+## targetPort:port that containers are listening on
+##
+
+#更新Deployment
+    kubectl edit deployment.v1.apps/ngxlua
+
+#伸缩Scale
+    kubectl scale deployment.v1.apps/ngxlua -n deploys --replicas=10
+
+#滚动更新Rolling Update
+    尽量使用apply对Deployment进行更新
+    kubectl apply -f xxx
+
+#rollout回滚
+  ##查看版本历史
+  kubectl rollout history deployment.v1.apps/ngxlua
+
+  ##查看指定版本信息
+  kubectl rollout history deployment.v1.apps/ngxlua --revision=1 -n deploys
+
+  ##回滚到指定版本
+  kubectl rollout undo deployment.v1.apps/ngxlua --to-revision=1 -n deploys
+
+
+
+
+###################################
+# kube-proxy的iptables模式 详解
+###################################
+#
+# (集群内部访问) Service如何将ClusterIP映射到Pod IP
+    [参考]: https://www.cnblogs.com/charlieroro/p/9588019.html
+    通过 iptables-save 命令,查看某一Services规则
+
+    -A KUBE-SERVICES -d 10.106.159.77/32 -p tcp -m comment --comment "deploys/ngxlua: cluster IP" -m tcp --dport 80 -j KUBE-SVC-W72CV5XLDMPOPXK7
+    -A KUBE-SVC-W72CV5XLDMPOPXK7 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-BOEWGJUGI6MR3SZG (50%的概率跳转到*3SZG)
+    -A KUBE-SVC-W72CV5XLDMPOPXK7 -j KUBE-SEP-IH6J4QR4UHY4UECS (剩下的50%跳转到*UECS)
+    -A KUBE-SEP-BOEWGJUGI6MR3SZG -p tcp -m tcp -j DNAT --to-destination 10.100.10.133:80
+    -A KUBE-SEP-IH6J4QR4UHY4UECS -p tcp -m tcp -j DNAT --to-destination 10.100.11.194:80
+
+    -j 就是指目标规则target rule
+    -j DNAT 就是指数据包从网卡发送出去的时候,修改数据包中的目的IP,
+            就是说,你想访问A,因为网关有DNAT,你实际访问的是B; A-->B
+
+
+##############################
+# 如何选择存储
+##############################
+
+1.如何选择存储和以什么方式存储
+    https://yq.aliyun.com/articles/621108
+
+
+
+#############################
+# 安装监控
+#############################
+
+1. headster+influxdb+grafana (官方已经不维护不推荐)
+   https://elatov.github.io/2018/06/installing-heapster-for-kubernetes/#confirm-kubernetes-dns-is-working
+   https://blog.51cto.com/wzlinux/2334719
+
+2. Prometheus Operator(推荐)
+   https://howchoo.com/g/ytc4ndywmjy/install-prometheus-and-grafana-in-your-kubernetes-cluster#logging-in-to-grafana
+   https://devopscube.com/setup-prometheus-monitoring-on-kubernetes/
+   https://devopscube.com/integrate-visualize-prometheus-grafana/
+   https://blog.51cto.com/wzlinux/2335343
+
+    安装helm
+        wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+        tar -xvf helm-v2.14.3-linux-amd64.tar.gz
+        cp linux-amd64/helm /usr/local/bin
+        helm version
+
+        参照文档https://github.com/helm/helm/blob/master/docs/rbac.md，创建rbac-config.yaml
+        cat << EOF > rbac-config.yaml
+        apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          name: tiller
+          namespace: kube-system
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: tiller
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: cluster-admin
+        subjects:
+          - kind: ServiceAccount
+            name: tiller
+            namespace: kube-system
+        EOF
+
+        kubectl apply -f rbac-config.yaml
+
+    安装prometheus Operator
+        #先清旧文件
+        helm delete prometheus-operator
+        helm del --purge prometheus-operator
+        kubectl delete crd prometheusrules.monitoring.coreos.com servicemonitors.monitoring.coreos.com prometheuses.monitoring.coreos.com podmonitors.monitoring.coreos.com alertmanagers.monitoring.coreos.com
+
+        #安装
+        helm init --upgrade
+        helm install stable/prometheus-operator --namespace monitoring --name prometheus-operator
+
+        #Expose NodePort端口
+        kubectl expose deployment prometheus-operator-grafana --type=NodePort --name=prometheus-operator-grafana-service -n monitoring
+
+        #查看Grafana密码
+        kubectl get secret --namespace monitoring prometheus-operator-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+
+################################
+# 安装 Ingress Controller
+################################
+    原理: https://www.cnblogs.com/linuxk/p/9706720.html
+    实践：https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
+    1. ingress要和deployment同一namespace
+
+
+################################
+# 安装 Redis Cluster
+################################
+    [1] https://www.jianshu.com/p/65c4baadf5d9
+    [2] https://juejin.im/post/5c989ff2f265da60f206ffe4
+    [3] https://rancher.com/blog/2019/deploying-redis-cluster/
+    初始化Cluster参照文章2;
+    可以尝试参照文章3创建;
